@@ -1,0 +1,13 @@
+<table class="table">
+  <tr>
+    <td><h3>All Schools</h3></td>
+    <td></td>
+  </tr>
+  <tr ng-repeat="school in schools">
+    <td>{{school.name}}</td>
+    <td>{{school.address}}</td>
+    <td>
+      <a class="btn btn-primary" href="#/schools/{{school.id}}">View</a>
+    </td>
+  </tr>
+</table>
