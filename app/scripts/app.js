@@ -17,6 +17,10 @@ angular
         templateUrl: 'views/school-view.html',
         controller: 'SchoolViewController'
       })
+      .when('/school/new',{
+        templateUrl: 'views/school-new.html',
+        controller: 'SchoolCreateController'
+      })
       .otherwise({
         redirectTo: '/schools'
       });
