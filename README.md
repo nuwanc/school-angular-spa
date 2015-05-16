@@ -17,7 +17,7 @@ AngularJS based SPA application. project is generated using Yeoman and build usi
 
 ## Build & development
 
-Run npm install and bower install
-Run `grunt` for building and `grunt serve` for preview.
+*Run `npm install` and `bower install`
+*Run `grunt` for building and `grunt serve` for preview.
 
 
