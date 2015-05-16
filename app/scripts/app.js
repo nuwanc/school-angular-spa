@@ -21,6 +21,10 @@ angular
         templateUrl: 'views/school-new.html',
         controller: 'SchoolCreateController'
       })
+      .when('/school/edit/:id',{
+        templateUrl : 'views/school-edit.html',
+        controller: 'SchoolEditController'
+      })
       .otherwise({
         redirectTo: '/schools'
       });
