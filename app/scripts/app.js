@@ -33,4 +33,4 @@ app.config(function ($routeProvider) {
 });
 
 //set the rest api url in here.
-app.constant('REST_URL', 'http://localhost:8080/api/school/:id');
+app.constant('REST_URL', 'http://localhost:8080/');

@@ -1,14 +1,20 @@
-<table class="table">
-  <tr>
-    <td><h3>All Schools</h3></td>
-    <td>&nbsp;</td>
-    <td><a href="#/school/new" class="btn btn-primary">Add New School</a></td>
-  </tr>
-  <tr ng-repeat="school in schools">
-    <td>{{school.name}}</td>
-    <td>{{school.address}}</td>
-    <td>
-      <a class="btn btn-primary" href="#/schools/{{school.id}}">View</a>
-    </td>
-  </tr>
-</table>
+<div class="row">
+  <div class="col-md-7">Search:<input ng-model="query"></div>
+  <div class="col-md-3 col-md-offset-2"><a href="#/school/new" class="btn btn-primary btn-sm">Add New School</a></div>
+</div>
+<div class="row">
+  <div class="col-md-12"><br/></div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped">
+      <tr ng-repeat="school in schools | filter:query">
+        <td>{{school.name}}</td>
+        <td>{{school.address}}</td>
+        <td>
+          <a class="btn btn-primary btn-sm" href="#/schools/{{school.id}}">View</a>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

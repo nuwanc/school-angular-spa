@@ -3,13 +3,19 @@
 angular.module('schoolSpaApp.controllers', []).controller('SchoolListController', ['$scope', 'School', function ($scope, School) {
   $scope.schools = School.query();
 
-}]).controller('SchoolViewController', ['$scope', '$routeParams', '$location', 'School', function ($scope, $routeParams, $location, School) {
+}]).controller('SchoolViewController', ['$scope', '$routeParams', '$location', 'School','PopupService', function ($scope, $routeParams, $location, School, PopupService) {
   $scope.school = School.get({id: $routeParams.id});
 
   $scope.deleteSchool = function (school) {
-    school.$delete(function () {
-      $location.path('/schools');
+
+    PopupService.confirmPopup('You sure you want to delete this?',function(result){
+      if (result) {
+        school.$delete(function () {
+          $location.path('/schools');
+        });
+      }
     });
+
   }
 
 }]).controller('SchoolCreateController', ['$scope', '$location', 'School', function ($scope, $location, School) {
