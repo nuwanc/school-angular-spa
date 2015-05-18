@@ -14,6 +14,9 @@ AngularJS based SPA application. project is generated using Yeoman and build usi
 * services.js - factory using to access rest api
 * views folder - all the views used in the application
 
+# application settings
+
+* app.js constant value `REST_URL` set the value to the spring-boot REST api url 
 
 ## Build & development
 
