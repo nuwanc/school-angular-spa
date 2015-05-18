@@ -12,4 +12,7 @@ angular.module('schoolSpaApp.services', []).factory('School', function($resource
       cb(result);
     });
   }
+  this.successPopup = function(message){
+    toastr.success(message);
+  }
 });
