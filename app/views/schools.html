@@ -8,7 +8,7 @@
 <div class="row">
   <div class="col-md-12">
     <table class="table table-striped">
-      <tr ng-repeat="school in schools | filter:query">
+      <tr ng-repeat="school in ctrl.schools | filter:query">
         <td>{{school.name}}</td>
         <td>{{school.address}}</td>
         <td>
