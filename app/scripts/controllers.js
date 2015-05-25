@@ -3,10 +3,10 @@
 (function(angular){
 
   function SchoolListController(School,PopupService) {
-    var that = this;
+
     School.query(function(data){
-      that.schools = data;
-    },function(error){
+      this.schools = data;
+    }.bind(this),function(error){
       console.log(error);
       PopupService.errorPopup('Unable to retrieve school list');
     });
@@ -14,11 +14,10 @@
   SchoolListController.$inject = ['School','PopupService'];
 
   function SchoolViewController($routeParams, $location, School, PopupService){
-    var that = this;
 
     School.get({id: $routeParams.id},function(data){
-      that.school = data;
-    },function(error){
+      this.school = data;
+    }.bind(this),function(error){
       console.log(error);
       PopupService.errorPopup('Unable to retrieve school');
     });
@@ -42,43 +41,41 @@
 
   function SchoolCreateController($location, School, PopupService){
     this.school = new School();
-    var that = this;
 
     this.addSchool = function(){
-      that.school.$save(function () {
+      this.school.$save(function () {
         $location.path('/schools'); // on success go back to home
         PopupService.successPopup('You have add a School.');
       },function(error){
         console.log(error);
         PopupService.errorPopup('Unable to save school');
       });
-    };
+    }.bind(this);
   }
   SchoolCreateController.$inject = ['$location', 'School', 'PopupService'];
 
   function SchoolEditController($location, $routeParams, School, PopupService){
-    var that = this;
 
     this.editSchool = function () {
-      that.school.$update(function () { // update an existing school. Issues a PUT to /api/school
+      this.school.$update(function () { // update an existing school. Issues a PUT to /api/school
         $location.path('/schools'); // on success go back to home
         PopupService.successPopup('You have updated a School');
       },function(error){
         console.log(error);
         PopupService.errorPopup('Unable to update school');
       });
-    };
+    }.bind(this);
 
     this.loadSchool = function () {
       School.get({id: $routeParams.id},function(data){
-        that.school = data;
-      },function(error){
+        this.school = data;
+      }.bind(this),function(error){
         console.log(error);
         PopupService.errorPopup('Unable to retrieve school');
       });
     };
     // default method
-    that.loadSchool();
+    this.loadSchool();
   }
   SchoolEditController.$inject = ['$location', '$routeParams', 'School', 'PopupService'];
   angular.module('schoolSpaApp.controllers',[]).controller('SchoolListController',SchoolListController)
